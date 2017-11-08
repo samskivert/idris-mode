@@ -18,15 +18,16 @@ object IdrisConfig extends Config.Defs {
   val effacers = List(
     effacer("comment.line", commentStyle),
     effacer("comment.block.string", stringStyle),
-    effacer("comment.block", docStyle),
+    effacer("comment.line.triple-bar", docStyle),
     effacer("constant", constantStyle),
     effacer("invalid", warnStyle),
+    effacer("keyword.directive", moduleStyle),
     effacer("keyword", keywordStyle),
     effacer("string", stringStyle),
     effacer("variable", variableStyle),
     effacer("entity.name.function", functionStyle),
     effacer("entity.name.type.module", moduleStyle),
-    effacer("entity.name.type.variant", typeStyle),
+    effacer("entity.name.type", typeStyle),
     effacer("support.other.module", moduleStyle),
     effacer("storage", variableStyle)
   )

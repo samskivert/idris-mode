@@ -15,6 +15,10 @@ repository:
    name: comment.line.double-dash.idris
    pattern: (--).*$\n?
    caps: 1=punctuation.definition.comment.idris
+  single:
+   name: comment.line.triple-bar.idris
+   pattern: (\|\|\|).*$\n?
+   caps: 1=punctuation.definition.comment.idris
   include: #block_comment
  infix_op:
   single:
@@ -134,7 +138,7 @@ patterns:
     pattern: \b[A-Z][a-zA-Z_']*
  single:
   name: keyword.other.idris
-  pattern: \b(deriving|where|data|type|case|of|let|in|newtype|default)\b
+  pattern: \b(deriving|where|data|type|case|of|let|in|newtype|default|public|export|interface|module|namespace)\b
  single:
   name: keyword.operator.idris
   pattern: \binfix[lr]?\b
@@ -194,7 +198,7 @@ patterns:
   name: support.constant.idris
   pattern: \b(Just|Nothing|Left|Right|True|False|LT|EQ|GT|\(\)|\[\])\b
  single:
-  name: constant.other.idris
+  name: entity.name.type.idris
   pattern: \b[A-Z]\w*\b
  include: #comments
  single:
@@ -203,7 +207,16 @@ patterns:
  include: #infix_op
  single:
   name: keyword.operator.idris
-  pattern: [|!%$?~+:\-.=</>\\]+
+  pattern: [!$?~+:\-.=</>\\]+
+ single:
+  name: keyword.operator.idris
+  pattern: %(?:\W)
+ single:
+  name: keyword.operator.idris
+  pattern: \|(?:[^\|])
  single:
   name: punctuation.separator.comma.idris
   pattern: ,
+ single:
+  name: keyword.directive.idris
+  pattern: %(\w+)
