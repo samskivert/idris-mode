@@ -1,0 +1,7 @@
+   name: idris-mode
+ source: git:https://github.com/scaled/idris-mode.git
+version: 1.0
+descrip: Provides support for editing Idris code.
+ weburl: https://github.com/scaled/idris-mode
+license: New BSD
+ depend: git:https://github.com/scaled/textmate-grammar.git
