@@ -9,13 +9,14 @@ import scaled.code.Indenter
 import scaled.grammar._
 import scaled.code.{CodeConfig, Commenter}
 
-object IdrisConfig extends Config.Defs {
+@Plugin(tag="textmate-grammar")
+class IdrisGrammarPlugin extends GrammarPlugin {
   import EditorConfig._
   import CodeConfig._
-  import GrammarConfig._
 
-  // maps TextMate grammar scopes to Scaled style definitions
-  val effacers = List(
+  override def grammars = Map("source.idris" -> "Idris.ndf")
+
+  override def effacers = List(
     effacer("comment.line", commentStyle),
     effacer("comment.block.string", stringStyle),
     effacer("comment.line.triple-bar", docStyle),
@@ -31,8 +32,6 @@ object IdrisConfig extends Config.Defs {
     effacer("support.other.module", moduleStyle),
     effacer("storage", variableStyle)
   )
-
-  val grammars = resource("Idris.ndf")(Grammar.parseNDFs)
 }
 
 @Major(name="idris",
@@ -43,9 +42,7 @@ class IdrisMode (env :Env) extends GrammarCodeMode(env) {
 
   override def dispose () {} // nada for now
 
-  override def configDefs = IdrisConfig :: super.configDefs
-  override def grammars = IdrisConfig.grammars.get
-  override def effacers = IdrisConfig.effacers
+  override def langScope = "source.idris"
 
   override def keymap = super.keymap.
     bind("self-insert-command", "'"); // don't auto-pair single quote
