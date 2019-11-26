@@ -40,7 +40,7 @@ class IdrisGrammarPlugin extends GrammarPlugin {
        desc="A major mode for editing Idris code.")
 class IdrisMode (env :Env) extends GrammarCodeMode(env) {
 
-  override def dispose () {} // nada for now
+  override def dispose () :Unit = {} // nada for now
 
   override def langScope = "source.idris"
 
